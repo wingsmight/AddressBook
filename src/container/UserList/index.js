@@ -1,8 +1,8 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import List from "../../component/List";
-import SearchBar from "../../container/SearchBar";
+import UsersPage from "../../component/List";
 import "./style.scss";
+import "./searchStyle.css";
 import { useState } from 'react'
 
 export default function UserList() {
@@ -14,7 +14,7 @@ export default function UserList() {
             if (searchTerm == "") {
                 return value
             }
-            else if (value.last_name.toLowerCase().includes(searchTerm.toLowerCase())) {
+            else if (value[type].toLowerCase().includes(searchTerm.toLowerCase())) {
                 return value
             }
         });
@@ -28,7 +28,7 @@ export default function UserList() {
                     event => { setSearchTerm(event.target.value) }
                 } />
             </div>
-            <List list={sortedList} />
+            <UsersPage list={sortedList} />
         </>
     );
 }
