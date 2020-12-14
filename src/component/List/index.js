@@ -124,7 +124,7 @@ class UsersPage extends Component {
                     <Droppable droppableId="dp1">
                         {(provided) => (
                             <div ref={provided.innerRef} {...provided.droppableProps}>
-                                {this.state.users.map(this.renderUsers)}
+                                {this.props.list.map(this.renderUsers)}
                                 {provided.placeholder}
                             </div>
                         )}

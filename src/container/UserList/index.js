@@ -4,6 +4,7 @@ import UsersPage from "../../component/List";
 import "./style.scss";
 import "./searchStyle.css";
 import { useState } from 'react'
+import { usersConst } from '../../Data'
 
 export default function UserList() {
     const [searchTerm, setSearchTerm] = useState("");
