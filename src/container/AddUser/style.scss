@@ -1,0 +1,78 @@
+@import "../../index.scss";
+
+/* MEDIA QUARY    */
+$break-pn-small: 320px;
+$break-pn-medium: 767px;
+$break-pablet: 992px;
+$break-large: 1200px;
+
+/* COLORS */
+$white-color: #ffffff;
+$input-color: #1E225D;
+$button-color: #27C798;
+
+
+.container-form {
+    @include flex;
+    width: 100%;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 5px 30px rgba(0, 0, 0, .2);
+
+    > form {
+        @include flex;
+        width: 100%;
+        padding: 10px;
+
+        > input {
+            flex: 1;
+            outline: none;
+            color: adjust-hue( $input-color, 20% );
+            border: 1px solid lighten( $input-color, 70% );
+            border-radius: 2px;
+            padding: 10px 8px;
+            cursor: pointer;
+            margin: 0px 3px;
+            @include transition;
+
+            &:focus {
+                box-shadow: 0 2px 4px #eee, 0 0 0 3px #eee;
+            }
+        }
+
+        > button {
+            flex: 1;
+            max-width: 100px;
+            width: 100%;
+            padding: 10px;
+            background-color: $button-color;
+            border-radius: 2px;
+            outline: none;
+            cursor: pointer;
+            color: $white-color;
+            border: 1px solid lighten( $button-color, 50% );
+            transition: all 0.3s linear;
+            @include transition;
+
+            &:hover {
+                background-color: lighten( $button-color, 10% );
+            }
+        }
+    }
+
+    @media screen and (max-width: $break-pn-medium) {
+        > form {
+            flex-direction: column;
+
+            > input {
+                width: 100%;
+                margin: 0px 0px 10px;
+            }
+
+            > button {
+                max-width: initial;
+                width: 100%;
+            }
+        }
+    }
+}

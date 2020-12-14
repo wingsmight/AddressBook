@@ -1,0 +1,33 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* COLORS */
+$main-color: #0E0C0B;
+$main-bg: #f4f6fc;
+
+body {
+    background: $main-bg;
+    color: $main-color;
+    padding: 0;
+    font-size: 1rem;
+    font-family: 'Roboto', sans-serif;
+}
+
+
+@mixin center {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@mixin transition {
+    transition: all 0.3s linear;
+}
+
+@mixin flex {
+    display: flex;
+}
