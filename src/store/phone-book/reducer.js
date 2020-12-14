@@ -1,14 +1,8 @@
 import { ADD_BOOK } from "./enum";
-//import { initialState } from "../../component/List/Data";
+import { usersConst } from "../../Data"
 
 let initialState = {
-    data: [
-        {
-            first_name: "Иван",
-            last_name: "Иванов",
-            phone_number: "89232551718"
-        }
-    ]
+    users: usersConst
 };
 
 export default (state = initialState, action) => {
@@ -16,7 +10,7 @@ export default (state = initialState, action) => {
         case ADD_BOOK:
             return {
                 ...state,
-                data: [...state.data, action.payload]
+                data: [...state.users, action.payload]
             };
         default:
             return state;

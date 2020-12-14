@@ -7,7 +7,7 @@ import { useState } from 'react'
 
 export default function UserList() {
     const [searchTerm, setSearchTerm] = useState("");
-    const BookList = useSelector(state => state.book.data);
+    const BookList = useSelector(state => state.book.users);
 
     const filterUser = (data, type) => {
         return data.filter((value) => {

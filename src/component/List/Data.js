@@ -1,4 +1,4 @@
-export const users = [
+export let users = [
     { first_name: 'Alison', last_name: 'Burger', phone_number: 89232507898 },
     { first_name: 'Michael', last_name: 'Cooley', phone_number: 89232507898 },
     { first_name: 'Brook', last_name: 'Brown', phone_number: 89232507898 },

@@ -1,11 +1,55 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
+import { useSelector } from "react-redux";
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
-import { users } from './Data';
+import { useState } from 'react'
+import { usersConst } from '../../Data'
+import User from '../../container/UserList/User'
 
 class UsersPage extends Component {
 
-    state = { users: users }
+    constructor() {
+        super();
+
+        this.state = { users: usersConst };
+
+        console.log(this.state)
+    }
+
+    state = { users: usersConst }
+
+    deleteUser = (index, e) => {
+
+        const users = Object.assign([], this.state.users);
+        users.splice(index, 1);
+        this.setState({ users: users });
+    }
+
+    favUser = (last_name, event) => {
+        const index = this.state.users.findIndex((user) => {
+            return (user.last_name === last_name);
+        })
+
+        this.state.users[index].isFav = !this.state.users[index].isFav;
+
+        this.setState({ users: this.state.users });
+    }
+
+    changeUserName = (last_name, event) => {
+        if (event.target.value.length === 0) {
+            return;
+        }
+        const index = this.state.users.findIndex((user) => {
+            return (user.last_name === last_name);
+        })
+
+        const user = Object.assign({}, this.state.users[index]);
+        user.first_name = event.target.value;
+
+        const users = Object.assign([], this.state.users);
+        users[index] = user;
+
+        this.setState({ users: users });
+    }
 
     onDragEnd = result => {
         const { destination, source, reason } = result;
@@ -39,25 +83,26 @@ class UsersPage extends Component {
             index={index}>
 
             {(provided) => (
-                <div
-                    ref={provided.innerRef}
+                <div ref={provided.innerRef}
                     {...provided.draggableProps}
-                    {...provided.dragHandleProps}
-                >
-                    <ul>
-                        <li key={index}>
-                            <p>{index + 1}</p>
-                            <p>{item.first_name}</p>
-                            <p>{item.last_name}</p>
-                            <p>{item.phone_number}</p>
-                        </li>
-                    </ul>
+                    {...provided.dragHandleProps}> 
+
+                    <div>
+                        <User
+                            delEvent={this.deleteUser.bind(this, index)}
+                            favEvent={this.favUser.bind(this, item.last_name)}
+                            index={index}
+                            first_name={item.first_name}
+                            last_name={item.last_name}
+                            phone_number={item.phone_number}
+                            isFav={item.isFav}
+                            changeEvent={this.changeUserName.bind(this, item.last_name)}
+                            key={index}>{item.first_name}
+                        </User>
+                    </div>
 
                 </div>
             )}
-
-
-
         </Draggable>
     }
 
@@ -83,12 +128,8 @@ class UsersPage extends Component {
                                 {provided.placeholder}
                             </div>
                         )}
-
                     </Droppable>
-
-
                 </div>
-
             </div>
         </DragDropContext>);
     }
