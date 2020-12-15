@@ -1,17 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import UsersPage from "../../component/List";
+import SearchBar from "../../container/UserList/SearchBar";
 import "./style.scss";
 import "./searchStyle.css";
 import { useState } from 'react'
 import { usersConst } from '../../Data'
 
-export default function UserList() {
-    const [searchTerm, setSearchTerm] = useState("");
-    const BookList = useSelector(state => state.book.users);
+export default function UserList(props) {
 
-    const filterUser = (data, type) => {
-        return data.filter((value) => {
+    const [searchTerm, setSearchTerm] = useState("");
+
+    const updateInput = async (input) => {
+        const filtered = props.list.filter(user => {
+            return user.last_name.toLowerCase().includes(input.toLowerCase())
+        })
+        setSearchTerm(input);
+    }
+
+    const filterUser = (type) => {
+        return props.list.filter((value) => {
             if (searchTerm == "") {
                 return value
             }
@@ -20,16 +28,16 @@ export default function UserList() {
             }
         });
     };
-    let sortedList = filterUser(BookList, "last_name");
+
+    let sortedList = filterUser("last_name");
 
     return (
         <>
-            <div>
-                <input type="text" placeholder="Поиск..." onChange={
-                    event => { setSearchTerm(event.target.value) }
-                } />
-            </div>
-            <UsersPage list={sortedList} />
+            <SearchBar
+                input={searchTerm}
+                onChange={updateInput}
+            />
+            <UsersPage list={sortedList} deleteUserHandler={props.deleteUserHandler} />
         </>
     );
 }

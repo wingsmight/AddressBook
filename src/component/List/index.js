@@ -7,49 +7,37 @@ import User from '../../container/UserList/User'
 
 class UsersPage extends Component {
 
-    constructor() {
-        super();
-
-        this.state = { users: usersConst };
-
-        console.log(this.state)
-    }
-
-    state = { users: usersConst }
-
-    deleteUser = (index, e) => {
-
-        const users = Object.assign([], this.state.users);
-        users.splice(index, 1);
-        this.setState({ users: users });
-    }
-
     favUser = (last_name, event) => {
-        const index = this.state.users.findIndex((user) => {
+        const index = this.props.list.findIndex((user) => {
             return (user.last_name === last_name);
         })
 
-        this.state.users[index].isFav = !this.state.users[index].isFav;
+        this.props.list[index].isFav = !this.props.list[index].isFav;
 
-        this.setState({ users: this.state.users });
+        this.setState({ users: this.props.list });
     }
 
     changeUserName = (last_name, event) => {
         if (event.target.value.length === 0) {
             return;
         }
-        const index = this.state.users.findIndex((user) => {
+        const index = this.props.list.findIndex((user) => {
             return (user.last_name === last_name);
         })
 
-        const user = Object.assign({}, this.state.users[index]);
+        const user = this.props.list[index];
         user.first_name = event.target.value;
 
-        const users = Object.assign([], this.state.users);
-        users[index] = user;
+        this.props.list[index] = user;
 
-        this.setState({ users: users });
+        this.setState({ users: this.props.list });
     }
+
+    //deleteUser = (index) => {
+    //    this.props.list.splice(index, 1);
+
+    //    this.setState({ list: this.props.list });
+    //}
 
     onDragEnd = result => {
         const { destination, source, reason } = result;
@@ -65,18 +53,17 @@ class UsersPage extends Component {
             return;
         }
 
-        const users = Object.assign([], this.state.users);
-        const droppedUser = this.state.users[source.index];
+        const droppedUser = this.props.list[source.index];
 
-
-        users.splice(source.index, 1);
-        users.splice(destination.index, 0, droppedUser);
-        this.setState({
-            users
-        });
+        this.props.list.splice(source.index, 1);
+        this.props.list.splice(destination.index, 0, droppedUser);
+        this.setState({ users: this.props.list });
     }
 
+
     renderUsers = (item, index) => {
+
+
         return <Draggable
             key={index}
             draggableId={index + ' '}
@@ -89,7 +76,7 @@ class UsersPage extends Component {
 
                     <div>
                         <User
-                            delEvent={this.deleteUser.bind(this, index)}
+                            delEvent={this.props.deleteUserHandler.bind(this, index)}
                             favEvent={this.favUser.bind(this, item.last_name)}
                             index={index}
                             first_name={item.first_name}

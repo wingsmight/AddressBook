@@ -13,7 +13,7 @@ export default function AddUser() {
         e.preventDefault();
 
         dispatch(
-            addBook({
+            /*props.*/addBook({
                 first_name: first_name.value,
                 last_name: last_name.value,
                 phone_number: phone_number.value
