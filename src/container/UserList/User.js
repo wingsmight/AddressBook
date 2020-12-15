@@ -19,7 +19,7 @@ const User = (props) => {
                     <p>{props.first_name}</p>
                     <p>{props.last_name}</p>
                     <p>{props.phone_number}</p>
-                    <input onChange={props.changeEvent} value={props.children} />
+
                     <button class="deleteButton" onClick={props.delEvent}>
                         <FaRegTrashAlt class="deleteIcon" />
                     </button>

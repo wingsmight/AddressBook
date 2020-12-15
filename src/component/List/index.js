@@ -7,62 +7,7 @@ import User from '../../container/UserList/User'
 
 class UsersPage extends Component {
 
-    favUser = (last_name, event) => {
-        const index = this.props.list.findIndex((user) => {
-            return (user.last_name === last_name);
-        })
-
-        this.props.list[index].isFav = !this.props.list[index].isFav;
-
-        this.setState({ users: this.props.list });
-    }
-
-    changeUserName = (last_name, event) => {
-        if (event.target.value.length === 0) {
-            return;
-        }
-        const index = this.props.list.findIndex((user) => {
-            return (user.last_name === last_name);
-        })
-
-        const user = this.props.list[index];
-        user.first_name = event.target.value;
-
-        this.props.list[index] = user;
-
-        this.setState({ users: this.props.list });
-    }
-
-    //deleteUser = (index) => {
-    //    this.props.list.splice(index, 1);
-
-    //    this.setState({ list: this.props.list });
-    //}
-
-    onDragEnd = result => {
-        const { destination, source, reason } = result;
-
-        if (!destination || reason === 'CANCEL') {
-            return;
-        }
-
-        if (
-            destination.droppableId === source.droppableId &&
-            destination.index === source.index
-        ) {
-            return;
-        }
-
-        const droppedUser = this.props.list[source.index];
-
-        this.props.list.splice(source.index, 1);
-        this.props.list.splice(destination.index, 0, droppedUser);
-        this.setState({ users: this.props.list });
-    }
-
-
     renderUsers = (item, index) => {
-
 
         return <Draggable
             key={index}
@@ -76,14 +21,14 @@ class UsersPage extends Component {
 
                     <div>
                         <User
-                            delEvent={this.props.deleteUserHandler.bind(this, index)}
-                            favEvent={this.favUser.bind(this, item.last_name)}
+                            delEvent={this.props.deleteUserHandler.bind(this, item.last_name)}
+                            favEvent={this.props.favUserHandler.bind(this, item.last_name)}
                             index={index}
                             first_name={item.first_name}
                             last_name={item.last_name}
                             phone_number={item.phone_number}
                             isFav={item.isFav}
-                            changeEvent={this.changeUserName.bind(this, item.last_name)}
+                            changeEvent={this.props.changeUserNameHandler.bind(this, item.last_name)}
                             key={index}>{item.first_name}
                         </User>
                     </div>
@@ -94,17 +39,18 @@ class UsersPage extends Component {
     }
 
     render() {
-        return (<DragDropContext onDragEnd={this.onDragEnd}>
+        return (<DragDropContext onDragEnd={this.props.onDragEndHandler}>
             <div className='container'>
                 <div className='users'>
                     <h1>Список контактов:</h1>
 
                     <ul>
                         <li>
-                            <p>#</p>
+                            <p>№</p>
+                            <p></p>
                             <p>Имя</p>
                             <p>Фамилия</p>
-                            <p>Телефон</p>
+                            <p>Адрес</p>
                         </li>
                     </ul>
 

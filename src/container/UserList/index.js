@@ -19,7 +19,7 @@ export default function UserList(props) {
     }
 
     const filterUser = (type) => {
-        return props.list.filter((value) => {
+        const filtered = props.list.filter((value) => {
             if (searchTerm == "") {
                 return value
             }
@@ -27,6 +27,8 @@ export default function UserList(props) {
                 return value
             }
         });
+
+        return filtered
     };
 
     let sortedList = filterUser("last_name");
@@ -37,7 +39,13 @@ export default function UserList(props) {
                 input={searchTerm}
                 onChange={updateInput}
             />
-            <UsersPage list={sortedList} deleteUserHandler={props.deleteUserHandler} />
+            <UsersPage
+                list={sortedList}
+                deleteUserHandler={props.deleteUserHandler}
+                favUserHandler={props.favUserHandler} 
+                changeUserNameHandler={props.changeUserNameHandler}
+                onDragEndHandler={props.onDragEndHandler}
+            />
         </>
     );
 }
