@@ -1,11 +1,9 @@
-import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
+import React from "react";
 import UsersPage from "../../component/List";
 import SearchBar from "../../container/UserList/SearchBar";
 import "./style.scss";
 import "./searchStyle.css";
 import { useState } from 'react'
-import { usersConst } from '../../Data'
 
 export default function UserList(props) {
 
@@ -23,7 +21,10 @@ export default function UserList(props) {
             if (searchTerm == "") {
                 return value
             }
-            else if (value[type].toLowerCase().includes(searchTerm.toLowerCase())) {
+            else if (value.first_name.toLowerCase().includes(searchTerm.toLowerCase())
+                || value.last_name.toLowerCase().includes(searchTerm.toLowerCase())
+                || value.phone_number.toLowerCase().includes(searchTerm.toLowerCase())
+            ) {
                 return value
             }
         });
@@ -31,7 +32,7 @@ export default function UserList(props) {
         return filtered
     };
 
-    let sortedList = filterUser("last_name");
+    let sortedList = filterUser();
 
     return (
         <>
