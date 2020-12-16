@@ -6,15 +6,25 @@ import "./style.scss";
 
 class AddUser extends React.Component
 {
-    
+    constructor() {
+        super();
+        this.state =
+        {
+            first_name: "",
+            last_name: "",
+            phone_number: "",
+            isFav: "",
+        };
+    }
+
+
 
     submitUser = e => {
         e.preventDefault();
 
-        //let newData = { first_name: first_name.value, last_name: last_name.value, phone_number: phone_number.value, isFav: false }
-        let newData = { first_name: "AAAA", last_name: "AAAA", phone_number: "sss", isFav: false }
+        let newData = { first_name: this.state.first_name.value, last_name: this.state.last_name.value, phone_number: this.state.phone_number.value, isFav: false }
 
-        this.props.addUserHandler.bind(this, newData);
+        this.props.addUserHandler(newData);
 
         //first_name.value = "";
         //last_name.value = "";
@@ -23,25 +33,23 @@ class AddUser extends React.Component
 
     render()
     {
-        let first_name, last_name, phone_number;
-
         return (
 
             <div className={"container-form"}>
                 <form onSubmit={this.submitUser}>
                     <input
                         type="text"
-                        ref={node => (first_name = node)}
+                        ref={node => (this.state.first_name = node)}
                         placeholder={"Имя"}
                     />
                     <input
                         type="text"
-                        ref={node => (last_name = node)}
+                        ref={node => (this.state.last_name = node)}
                         placeholder={"Фамилия"}
                     />
                     <input
                         type="tel"
-                        ref={node => (phone_number = node)}
+                        ref={node => (this.state.phone_number = node)}
                         placeholder={"Адрес"}
                     />
                     <button type="submit">Добавить человека</button>

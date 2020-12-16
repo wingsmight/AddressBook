@@ -78,27 +78,22 @@ class Main extends Component {
     }
 
     addUser = (data) => {
-        this.state.list.splice(0, 1);
+        this.setState(state => {
+            const list = state.list.concat(data);
 
-        this.setState({ list: this.state.list });
+            return {
+                list,
+                value: '',
+            };
+        });
     };
-
-    //addUser = (data) => {
-    //    this.setState(state => {
-    //        const list = state.list.concat(data);
-
-    //        return {
-    //            list,
-    //            value: '',
-    //        };
-    //    });
-    //};
 
     render() {
         return (
             <>
                 <AddUser
                     addUserHandler={this.addUser}
+                    clearUsersHandler={this.onClearArray}
                 />
                 <UserList
                     list={this.state.list}

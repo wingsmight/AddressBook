@@ -1,12 +1,15 @@
 {
   "ExpandedNodes": [
     "",
-    "\\public",
     "\\src",
+    "\\src\\component",
     "\\src\\component\\List",
+    "\\src\\container",
     "\\src\\container\\AddUser",
-    "\\src\\container\\UserList"
+    "\\src\\container\\UserList",
+    "\\src\\store",
+    "\\src\\store\\phone-book"
   ],
-  "SelectedNode": "\\package.json",
+  "SelectedNode": "\\src\\container\\UserList\\userStyle.css",
   "PreviewInSolutionExplorer": false
 }

@@ -21,7 +21,7 @@ const User = (props) => {
                     <p>{props.phone_number}</p>
 
                     <button class="deleteButton" onClick={props.delEvent}>
-                        <FaRegTrashAlt class="deleteIcon" />
+                        <FaRegTrashAlt className="deleteIcon" />
                     </button>
                 </li>
             </ul>
