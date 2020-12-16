@@ -12,6 +12,7 @@ class UsersPage extends Component {
     renderUsers = (item, index) => {
 
         return <Draggable
+            isDragDisabled={true}
             key={index}
             draggableId={index + ' '}
             index={index}>
