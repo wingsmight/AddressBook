@@ -1,8 +1,6 @@
 import React, { Component } from "react";
-import { useSelector } from "react-redux";
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
-import { useState } from 'react'
-import { usersConst } from '../../Data'
+import '../../container/UserList/userPageStyle.css'
 import User from '../../container/UserList/User'
 
 class UsersPage extends Component {
@@ -42,8 +40,6 @@ class UsersPage extends Component {
         return (<DragDropContext onDragEnd={this.props.onDragEndHandler}>
             <div className='container'>
                 <div className='users'>
-                    <h1>Список контактов:</h1>
-
                     <ul>
                         <li>
                             <p>№</p>

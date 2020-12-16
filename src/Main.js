@@ -2,6 +2,8 @@ import React from "react";
 import AddUser from "./container/AddUser";
 import UserList from "./container/UserList";
 import { Component } from "react";
+import { NotificationContainer, NotificationManager } from 'react-notifications';
+import 'react-notifications/lib/notifications.css';
 
 class Main extends Component {
     constructor(props) {
@@ -78,6 +80,7 @@ class Main extends Component {
     }
 
     addUser = (data) => {
+
         this.setState(state => {
             const list = state.list.concat(data);
 
@@ -94,7 +97,11 @@ class Main extends Component {
                 <AddUser
                     addUserHandler={this.addUser}
                     clearUsersHandler={this.onClearArray}
+                    list={this.state.list}
                 />
+
+                <h1>Список контактов:</h1>
+
                 <UserList
                     list={this.state.list}
                     deleteUserHandler={this.deleteUser}
@@ -102,6 +109,8 @@ class Main extends Component {
                     changeUserNameHandler={this.changeUserName}
                     onDragEndHandler={this.onDragEnd}
                 />
+
+                <NotificationContainer/>
             </>
         );
     }

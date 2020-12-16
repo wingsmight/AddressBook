@@ -14,15 +14,19 @@ $button-color: #27C798;
 
 .container-form {
     @include flex;
-    width: 100%;
     background: #fff;
     border-radius: 5px;
     box-shadow: 0 5px 30px rgba(0, 0, 0, .2);
+    margin: 50px;
+    margin-left: 100px;
+    margin-right: 100px;
 
     > form {
-        @include flex;
+        display: table;
         width: 100%;
         padding: 10px;
+        align-items: center;
+        justify-content: center;
 
         > input {
             flex: 1;
@@ -41,8 +45,13 @@ $button-color: #27C798;
         }
 
         > button {
+            margin-top: 10px;
             flex: 1;
-            max-width: 100px;
+            display: table-cell;
+            vertical-align: bottom;
+            min-width: 75px;
+            right: 0;
+            bottom: 0;
             width: 100%;
             padding: 10px;
             background-color: $button-color;
