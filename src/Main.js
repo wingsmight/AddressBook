@@ -11,10 +11,24 @@ class Main extends Component {
 
         this.state = {
             list: [
-                { first_name: 'Петр', last_name: 'Петров', phone_number: "Пушкина, 23, 3а", isFav: true },
-                { first_name: 'Михаил', last_name: 'Лавров', phone_number: "Есенина, 27, 7", isFav: false },
-                { first_name: 'Станислав', last_name: 'Черный', phone_number: "Твардовского, 13, 3/5а", isFav: false },
-            ]
+                { first_name: 'Петр', last_name: 'Петров', phone_number: "Москва, ул. Пушкина, 23, 3а", isFav: true },
+                { first_name: 'Михаил', last_name: 'Лавров', phone_number: "Иркутск, ул. Есенина, 27, 7", isFav: false },
+                { first_name: 'Леонид', last_name: 'Чернышев', phone_number: "Новосибирск, ул. Твардовского, 13, 3/5а", isFav: false },
+                { first_name: 'Никита', last_name: 'Жуков', phone_number: "Барыш, ул. Калитниковская Ср., дом 129, квартира 568", isFav: false },
+                { first_name: 'Павел', last_name: 'Поляков', phone_number: "Черный Яр, ул. Лечебная, дом 94, квартира 16", isFav: false },
+                { first_name: 'Александр', last_name: 'Мартынов', phone_number: "Лабытнанги, ул. Южный проезд, дом 131, квартира 218", isFav: false },
+                { first_name: 'Игорь', last_name: 'Морозов', phone_number: "Идринское, ул. Старофилинская, дом 95, квартира 338", isFav: false },
+                { first_name: 'Андрей', last_name: 'Козлов', phone_number: "Дубенки, ул. Добрынинский 1-й пер, дом 96, квартира 134", isFav: false },
+                { first_name: 'Алиса', last_name: 'Попова', phone_number: "Барыш, ул. Калитниковская Ср., дом 129, квартира 568", isFav: false },
+                { first_name: 'София', last_name: 'Некрасова', phone_number: "Рузаевка, ул. Самаринская, дом 162, квартира 301", isFav: false },
+                { first_name: 'Артемий', last_name: 'Малышев', phone_number: "Волхов, ул. Мечникова пр-кт, дом 146, квартира 28", isFav: false },
+                { first_name: 'Александр', last_name: 'Чеботарев', phone_number: "Гурьевск, ул. Выборная, дом 91, квартира 267", isFav: false },
+            ],
+            acsList: {
+                first_name: false,
+                last_name: false,
+                phone_number: false
+            }
         };
     }
 
@@ -79,6 +93,37 @@ class Main extends Component {
         this.setState({ list: this.state.list });
     }
 
+    sort = (type) => {
+        this.state.acsList[type] = !this.state.acsList[type];
+
+        const sorted = this.state.list.sort((a, b) => {
+            var nameA = a[type].toLowerCase();
+            var nameB = b[type].toLowerCase();
+
+            if (this.state.acsList[type]) {
+                if (nameA < nameB) {
+                    return -1;
+                }
+                if (nameA > nameB) {
+                    return 1;
+                }
+            }
+            else {
+                if (nameA < nameB) {
+                    return 1;
+                }
+                if (nameA > nameB) {
+                    return -1;
+                }
+            }
+
+            return 0;
+        });
+
+        this.state.list = sorted;
+        this.setState({ list: this.state.list });
+    };
+
     addUser = (data) => {
 
         this.setState(state => {
@@ -108,6 +153,7 @@ class Main extends Component {
                     favUserHandler={this.favUser}
                     changeUserNameHandler={this.changeUserName}
                     onDragEndHandler={this.onDragEnd}
+                    sortHandler={this.sort}
                 />
 
                 <NotificationContainer/>

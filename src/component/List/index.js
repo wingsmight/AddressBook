@@ -5,6 +5,10 @@ import User from '../../container/UserList/User'
 
 class UsersPage extends Component {
 
+    sortBy = (sortType) => {
+        console.log(sortType);
+    }
+
     renderUsers = (item, index) => {
 
         return <Draggable
@@ -40,13 +44,29 @@ class UsersPage extends Component {
         return (<DragDropContext onDragEnd={this.props.onDragEndHandler}>
             <div className='container'>
                 <div className='users'>
-                    <ul>
-                        <li>
-                            <p>№</p>
-                            <p></p>
-                            <p>Имя</p>
-                            <p>Фамилия</p>
-                            <p>Адрес</p>
+                    <ul className='buttonsListUL'>
+                        <li className='buttonsList'>
+                            <p>
+                                <p></p>
+                            </p>
+                            <p>
+                                <p>№</p>
+                            </p>
+                            <p>
+                            <button className="sortButton" onClick={this.props.sortHandler.bind(this, "first_name")}>
+                                <p>Имя</p>
+                                </button>
+                            </p>
+                            <p>
+                            <button className="sortButton" onClick={this.props.sortHandler.bind(this, "last_name")}>
+                                <p>Фамилия</p>
+                                </button>
+                            </p>
+                            <p>
+                            <button className="sortButton" onClick={this.props.sortHandler.bind(this, "phone_number")}>
+                                <p>Адрес</p>
+                                </button>
+                            </p>
                         </li>
                     </ul>
 

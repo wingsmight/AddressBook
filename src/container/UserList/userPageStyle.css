@@ -1,0 +1,29 @@
+.sortButton {
+    background-color: Transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+    align-self: center;
+    border-radius: 15px;
+    display: inline-block;
+}
+
+    .sortButton:hover {
+        background-color: rgba(27, 101, 46, 0.10);
+        border-radius: 10px;
+        transition-duration: 500ms;
+    }
+
+.buttonsList {
+    background-color: rgba(0, 0, 0, 0.08);
+    align-content: center;
+    align-self: center;
+    align-items: center;
+    height: 45px;
+}
+
+.buttonsListUL {
+
+}

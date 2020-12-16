@@ -11,10 +11,12 @@ const User = (props) => {
         return (
             <ul>
                 <li key={index}>
+                    <p>
                     <FavButton
                         isFav={props.isFav}
                         favEvent={props.favEvent}
-                    />
+                        />
+                    </p>
                     <p>{index + 1}</p>
                     <p>{props.first_name}</p>
                     <p>{props.last_name}</p>
