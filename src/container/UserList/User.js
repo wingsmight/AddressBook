@@ -14,7 +14,7 @@ class User extends Component {
             display: "notdisplayed",
             first_name_disable: true,
             last_name_disable: true,
-            phone_number_disable: true,
+            address_disable: true,
         }
     }
     showButton = e => {
@@ -35,8 +35,8 @@ class User extends Component {
     setDisable_last_name = () => {
         this.setState({ last_name_disable: !this.state.last_name_disable })
     }
-    setDisable_phone_number = () => {
-        this.setState({ phone_number_disable: !this.state.phone_number_disable })
+    setDisable_address = () => {
+        this.setState({ address_disable: !this.state.address_disable })
     }
 
 
@@ -51,7 +51,7 @@ class User extends Component {
                 this.setState({
                     first_name_disable: true,
                     last_name_disable: true,
-                    phone_number_disable: true,
+                    address_disable: true,
                 })
             }
 
@@ -102,12 +102,12 @@ class User extends Component {
                         <p>
                             <ContentEditable
                                 className="editAddress"
-                                html={this.props.phone_number}
-                                disabled={this.state.phone_number_disable}
-                                onChange={this.props.changeEvent.bind(this, this.props.last_name, "phone_number")}
+                                html={this.props.address}
+                                disabled={this.state.address_disable}
+                                onChange={this.props.changeEvent.bind(this, this.props.last_name, "address")}
                             />
                             <button className={this.state.display} onClick={
-                                this.setDisable_phone_number.bind(this)
+                                this.setDisable_address.bind(this)
                             }>
                                 <MdModeEdit className="editIcon" />
                             </button>

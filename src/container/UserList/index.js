@@ -23,7 +23,7 @@ export default function UserList(props) {
             }
             else if (value.first_name.toLowerCase().includes(searchTerm.toLowerCase())
                 || value.last_name.toLowerCase().includes(searchTerm.toLowerCase())
-                || value.phone_number.toLowerCase().includes(searchTerm.toLowerCase())
+                || value.address.toLowerCase().includes(searchTerm.toLowerCase())
             ) {
                 return value
             }

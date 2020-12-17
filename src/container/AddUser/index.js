@@ -14,14 +14,14 @@ class AddUser extends React.Component
         {
             first_name: "",
             last_name: "",
-            phone_number: "",
+            address: "",
         };
     }
 
     checkExist = (user) => {
         return user.first_name == this.state.first_name.value &&
             user.last_name == this.state.last_name.value &&
-            user.phone_number == this.state.phone_number.value;
+            user.address == this.state.address.value;
     }
 
     submitUser = e => {
@@ -33,7 +33,7 @@ class AddUser extends React.Component
         else if (this.state.last_name.value == "") {
             NotificationManager.info('Поле Фамилия - пустое');
         }
-        else if (this.state.phone_number.value == "") {
+        else if (this.state.address.value == "") {
             NotificationManager.info('Поле Адрес - пустое');
         }
         else if (this.props.list.some(this.checkExist))
@@ -41,13 +41,13 @@ class AddUser extends React.Component
             NotificationManager.info('Данный пользователь уже существует');
         }
         else {
-            let newData = { first_name: this.state.first_name.value, last_name: this.state.last_name.value, phone_number: this.state.phone_number.value, isFav: false }
+            let newData = { first_name: this.state.first_name.value, last_name: this.state.last_name.value, address: this.state.address.value, isFav: false }
 
             this.props.addUserHandler(newData);
 
             this.state.first_name.value = "";
             this.state.last_name.value = "";
-            this.state.phone_number.value = "";
+            this.state.address.value = "";
         }
     };
 
@@ -69,7 +69,7 @@ class AddUser extends React.Component
                     />
                     <input
                         type="tel"
-                        ref={node => (this.state.phone_number = node)}
+                        ref={node => (this.state.address = node)}
                         placeholder={"Адрес"}
                     />
                     <button type="submit">Добавить человека</button>

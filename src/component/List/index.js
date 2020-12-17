@@ -29,7 +29,7 @@ class UsersPage extends Component {
                             index={index}
                             first_name={item.first_name}
                             last_name={item.last_name}
-                            phone_number={item.phone_number}
+                            address={item.address}
                             isFav={item.isFav}
                             changeEvent={this.props.changeUserNameHandler}
                             key={index}>{item.first_name}
@@ -64,7 +64,7 @@ class UsersPage extends Component {
                                 </button>
                             </p>
                             <p>
-                            <button className="sortButton" onClick={this.props.sortHandler.bind(this, "phone_number")}>
+                            <button className="sortButton" onClick={this.props.sortHandler.bind(this, "address")}>
                                 <p>Адрес</p>
                                 </button>
                             </p>
