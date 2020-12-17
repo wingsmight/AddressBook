@@ -31,7 +31,7 @@ class UsersPage extends Component {
                             last_name={item.last_name}
                             phone_number={item.phone_number}
                             isFav={item.isFav}
-                            changeEvent={this.props.changeUserNameHandler.bind(this, item.last_name)}
+                            changeEvent={this.props.changeUserNameHandler}
                             key={index}>{item.first_name}
                         </User>
                     </div>

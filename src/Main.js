@@ -19,7 +19,7 @@ class Main extends Component {
                 { first_name: 'Александр', last_name: 'Мартынов', phone_number: "Лабытнанги, ул. Южный проезд, дом 131, квартира 218", isFav: false },
                 { first_name: 'Игорь', last_name: 'Морозов', phone_number: "Идринское, ул. Старофилинская, дом 95, квартира 338", isFav: false },
                 { first_name: 'Андрей', last_name: 'Козлов', phone_number: "Дубенки, ул. Добрынинский 1-й пер, дом 96, квартира 134", isFav: false },
-                { first_name: 'Алиса', last_name: 'Попова', phone_number: "Барыш, ул. Калитниковская Ср., дом 129, квартира 568", isFav: false },
+                { first_name: 'Алиса', last_name: 'Жукова', phone_number: "Барыш, ул. Калитниковская Ср., дом 129, квартира 568", isFav: false },
                 { first_name: 'София', last_name: 'Некрасова', phone_number: "Рузаевка, ул. Самаринская, дом 162, квартира 301", isFav: false },
                 { first_name: 'Артемий', last_name: 'Малышев', phone_number: "Волхов, ул. Мечникова пр-кт, дом 146, квартира 28", isFav: false },
                 { first_name: 'Александр', last_name: 'Чеботарев', phone_number: "Гурьевск, ул. Выборная, дом 91, квартира 267", isFav: false },
@@ -56,7 +56,7 @@ class Main extends Component {
         this.setState({ list: this.state.list });
     }
 
-    changeUserName = (last_name, event) => {
+    changeUserName = (last_name, type, event) => {
         if (event.target.value.length === 0) {
             return;
         }
@@ -65,7 +65,7 @@ class Main extends Component {
         })
 
         const user = this.state.list[index];
-        user.first_name = event.target.value;
+        user[type] = event.target.value;
 
         this.state.list[index] = user;
 

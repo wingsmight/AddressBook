@@ -28,3 +28,40 @@
     height: 25px;
     color: red;
 }
+
+.editIcon {
+    width: 15px;
+    height: 15px;
+}
+
+.notdisplayed {
+    display: none;
+}
+
+.displayed {
+    display: flex;
+    height: 20px;
+    margin: auto;
+    width: 30px;
+    height: 25px;
+    background-color: Transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+    align-self: flex-start;
+    position: relative;
+    top: -50%;
+    left: -55%;
+}
+
+.editName[contenteditable="true"] {
+    border: 1px dashed #aaa;
+    width: 200px;
+}
+
+.editAddress[contenteditable="true"] {
+    border: 1px dashed #aaa;
+    width: 300px;
+}
