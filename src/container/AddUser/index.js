@@ -28,17 +28,17 @@ class AddUser extends React.Component
         e.preventDefault();
 
         if (this.state.first_name.value == "") {
-            NotificationManager.info('Поле Имя - пустое');
+            NotificationManager.warning('Поле Имя - пустое');
         }
         else if (this.state.last_name.value == "") {
-            NotificationManager.info('Поле Фамилия - пустое');
+            NotificationManager.warning('Поле Фамилия - пустое');
         }
         else if (this.state.address.value == "") {
-            NotificationManager.info('Поле Адрес - пустое');
+            NotificationManager.warning('Поле Адрес - пустое');
         }
         else if (this.props.list.some(this.checkExist))
         {
-            NotificationManager.info('Данный пользователь уже существует');
+            NotificationManager.warning('Данный пользователь уже существует');
         }
         else {
             let newData = { first_name: this.state.first_name.value, last_name: this.state.last_name.value, address: this.state.address.value, isFav: false }
