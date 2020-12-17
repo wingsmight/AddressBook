@@ -5,10 +5,6 @@ import User from '../../container/UserList/User'
 
 class UsersPage extends Component {
 
-    sortBy = (sortType) => {
-        console.log(sortType);
-    }
-
     renderUsers = (item, index) => {
 
         return <Draggable
@@ -30,6 +26,7 @@ class UsersPage extends Component {
                             first_name={item.first_name}
                             last_name={item.last_name}
                             address={item.address}
+                            phone_number={item.phone_number}
                             isFav={item.isFav}
                             changeEvent={this.props.changeUserNameHandler}
                             key={index}>{item.first_name}
@@ -54,18 +51,23 @@ class UsersPage extends Component {
                                 <p>№</p>
                             </p>
                             <p>
-                            <button className="sortButton" onClick={this.props.sortHandler.bind(this, "first_name")}>
-                                <p>Имя</p>
+                                <button className="sortButton" onClick={this.props.sortHandler.bind(this, "first_name")}>
+                                    <p>Имя</p>
                                 </button>
                             </p>
                             <p>
-                            <button className="sortButton" onClick={this.props.sortHandler.bind(this, "last_name")}>
-                                <p>Фамилия</p>
+                                <button className="sortButton" onClick={this.props.sortHandler.bind(this, "last_name")}>
+                                    <p>Фамилия</p>
                                 </button>
                             </p>
                             <p>
-                            <button className="sortButton" onClick={this.props.sortHandler.bind(this, "address")}>
-                                <p>Адрес</p>
+                                <button className="sortButton" onClick={this.props.sortHandler.bind(this, "address")}>
+                                    <p>Адрес</p>
+                                </button>
+                            </p>
+                            <p>
+                                <button className="sortButton" onClick={this.props.sortByPhoneNubmerHandler.bind(this)}>
+                                    <p>Телефон</p>
                                 </button>
                             </p>
                         </li>

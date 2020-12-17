@@ -24,6 +24,7 @@ export default function UserList(props) {
             else if (value.first_name.toLowerCase().includes(searchTerm.toLowerCase())
                 || value.last_name.toLowerCase().includes(searchTerm.toLowerCase())
                 || value.address.toLowerCase().includes(searchTerm.toLowerCase())
+                || value.phone_number.toString().includes(searchTerm.toLowerCase())
             ) {
                 return value
             }
@@ -48,6 +49,7 @@ export default function UserList(props) {
                 changeUserNameHandler={props.changeUserNameHandler}
                 onDragEndHandler={props.onDragEndHandler}
                 sortHandler={props.sortHandler}
+                sortByPhoneNubmerHandler={props.sortByPhoneNumberHandler}
             />
         </>
     );

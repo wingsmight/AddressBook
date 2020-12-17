@@ -15,6 +15,7 @@ class User extends Component {
             first_name_disable: true,
             last_name_disable: true,
             address_disable: true,
+            phone_number_disable: true,
         }
     }
     showButton = e => {
@@ -38,6 +39,9 @@ class User extends Component {
     setDisable_address = () => {
         this.setState({ address_disable: !this.state.address_disable })
     }
+    setDisable_phone_number = () => {
+        this.setState({ phone_number_disable: !this.state.phone_number_disable })
+    }
 
 
 
@@ -52,6 +56,7 @@ class User extends Component {
                     first_name_disable: true,
                     last_name_disable: true,
                     address_disable: true,
+                    phone_number_disable: true,
                 })
             }
 
@@ -108,6 +113,19 @@ class User extends Component {
                             />
                             <button className={this.state.display} onClick={
                                 this.setDisable_address.bind(this)
+                            }>
+                                <MdModeEdit className="editIcon" />
+                            </button>
+                        </p>
+                        <p>
+                            <ContentEditable
+                                className="editName"
+                                html={"" +this.props.phone_number}
+                                disabled={this.state.phone_number_disable}
+                                onChange={this.props.changeEvent.bind(this, this.props.last_name, "phone_number")}
+                            />
+                            <button className={this.state.display} onClick={
+                                this.setDisable_phone_number.bind(this)
                             }>
                                 <MdModeEdit className="editIcon" />
                             </button>
