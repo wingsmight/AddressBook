@@ -49,7 +49,6 @@ export default function UserList(props) {
                 changeUserNameHandler={props.changeUserNameHandler}
                 onDragEndHandler={props.onDragEndHandler}
                 sortHandler={props.sortHandler}
-                sortByPhoneNubmerHandler={props.sortByPhoneNumberHandler}
             />
         </>
     );

@@ -66,7 +66,7 @@ class UsersPage extends Component {
                                 </button>
                             </p>
                             <p>
-                                <button className="sortButton" onClick={this.props.sortByPhoneNubmerHandler.bind(this)}>
+                                <button className="sortButton" onClick={this.props.sortHandler.bind(this, "phone_number")}>
                                     <p>Телефон</p>
                                 </button>
                             </p>

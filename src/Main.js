@@ -98,8 +98,8 @@ class Main extends Component {
         this.state.acsList[type] = !this.state.acsList[type];
 
         const sorted = this.state.list.sort((a, b) => {
-            var nameA = a[type].toLowerCase();
-            var nameB = b[type].toLowerCase();
+            var nameA = a[type].toString().toLowerCase();
+            var nameB = b[type].toString().toLowerCase();
 
             if (this.state.acsList[type]) {
                 if (nameA < nameB) {
@@ -114,35 +114,6 @@ class Main extends Component {
                     return 1;
                 }
                 if (nameA > nameB) {
-                    return -1;
-                }
-            }
-
-            return 0;
-        });
-
-        this.state.list = sorted;
-        this.setState({ list: this.state.list });
-    };
-
-    sortByPhoneNumber = () => {
-        this.state.acsList.phone_number = !this.state.acsList.phone_number;
-
-        const sorted = this.state.list.sort((a, b) => {
-
-            if (this.state.acsList.phone_number) {
-                if (a < b) {
-                    return -1;
-                }
-                if (a > b) {
-                    return 1;
-                }
-            }
-            else {
-                if (a < b) {
-                    return 1;
-                }
-                if (a > b) {
                     return -1;
                 }
             }
@@ -183,7 +154,6 @@ class Main extends Component {
                     changeUserNameHandler={this.changeUserName}
                     onDragEndHandler={this.onDragEnd}
                     sortHandler={this.sort}
-                    sortByPhoneNumberHandler={this.sortByPhoneNumber}
                 />
 
                 <NotificationContainer/>
